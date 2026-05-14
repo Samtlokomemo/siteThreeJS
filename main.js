@@ -45,7 +45,7 @@ let objeto;
 const loader = new GLTFLoader();
 
 loader.load(
-    `/modelo/scene.gltf`,
+    `modelo/scene.gltf`,
     function(gltf){
         objeto = gltf.scene;
         cena.add(objeto);
