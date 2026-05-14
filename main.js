@@ -39,28 +39,28 @@ cena.add(luzAzul, luzAzulHelper, luzVermelha, luzVermelhaHelper, ambientLight, g
 
 // Controlando a câmera
 const controles = new OrbitControls(camera, renderer.domElement);
+renderer.render( cena, camera );
 
 // Importando o modelo 3D
 let objeto;
 const loader = new GLTFLoader();
 
 loader.load(
-    `modelo/scene.gltf`,
+    './modelo/scene.gltf',
     function(gltf){
         objeto = gltf.scene;
         cena.add(objeto);
-    },
-    function(error){
-        console.error(error);
+    },undefined, function(error){
+        console.error("Error ao carregar o modelo: ", error);
 });
-
 
 
 // Animando :)
 function animate() {
     requestAnimationFrame( animate );
-    objeto.rotation.y += 0.03;
+    if (!objeto) return;
 
+    objeto.rotation.y += 0.03;
     controles.update();
     renderer.render( cena, camera );
 }
