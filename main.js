@@ -66,3 +66,14 @@ function animate() {
 }
 
 animate();
+
+// Handler de resize
+window.addEventListener('resize', () =>{
+    const novaLargura = window.innerWidth;
+    const novaAltura = window.innerHeight;
+
+    camera.aspect = novaLargura / novaAltura;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(novaLargura, novaAltura);
+})
